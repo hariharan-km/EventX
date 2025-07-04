@@ -1,0 +1,14 @@
+@import "tailwindcss";
+/* index.css */
+.react-calendar__tile.event-day {
+  background: #bbf7d0 !important; /* Tailwind's bg-green-200 */
+  border-radius: 50%;
+  font-weight: bold;
+  color: black;
+}
+a
+
+/* Optional global font */
+body {
+  font-family: 'Inter', sans-serif;
+}

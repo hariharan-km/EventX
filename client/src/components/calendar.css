@@ -1,0 +1,7 @@
+/* EventCalendar.css */
+.react-calendar__tile.highlight {
+  background: #4f46e5;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+}
