@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/api';
 
 const ClientHome = () => {
   const [date, setDate] = useState(new Date());
@@ -11,7 +12,7 @@ const ClientHome = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/client/my-events', {
+        const res = await axios.get(`${API_BASE_URL}/api/client/my-events`, {
           withCredentials: true,
         });
         setEvents(res.data);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EventCalendar from '../../components/EventCalendar';
 import { FaCalendarAlt, FaClipboardList, FaBoxOpen, FaBoxes, FaUsers } from 'react-icons/fa';
+import { API_BASE_URL } from '../../config/api';
 
 const PlannerHome = () => {
   const [stats, setStats] = useState({
@@ -15,7 +16,7 @@ const PlannerHome = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/planner/stats", {
+        const res = await axios.get(`${API_BASE_URL}/api/planner/stats`, {
           withCredentials: true
         });
         setStats(res.data);

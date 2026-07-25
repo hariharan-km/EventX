@@ -1,9 +1,9 @@
-// src/components/EventCalendar.jsx
 import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import axios from 'axios';
 import '../components/calendar.css'; // Import custom styles
+import { API_BASE_URL } from '../config/api';
 
 const EventCalendar = () => {
   const [value, setValue] = useState(new Date());
@@ -13,7 +13,7 @@ const EventCalendar = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/planner/approved-events', {
+        const res = await axios.get(`${API_BASE_URL}/api/planner/approved-events`, {
           withCredentials: true,
         });
 

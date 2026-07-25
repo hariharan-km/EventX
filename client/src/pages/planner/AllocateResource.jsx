@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const AllocateResource = () => {
   const [events, setEvents] = useState([]);
@@ -12,12 +13,12 @@ const AllocateResource = () => {
 
   useEffect(() => {
     // Fetch Events
-    axios.get("http://localhost:5000/api/planner/get-event", { withCredentials: true })
+    axios.get(`${API_BASE_URL}/api/planner/get-event`, { withCredentials: true })
       .then((res) => setEvents(res.data))
       .catch((err) => console.error("Error fetching events:", err));
 
     // Fetch Resources
-    axios.get("http://localhost:5000/api/planner/resources", { withCredentials: true })
+    axios.get(`${API_BASE_URL}/api/planner/resources`, { withCredentials: true })
       .then((res) => setResources(res.data))
       .catch((err) => console.error("Error fetching resources:", err));
   }, []);
@@ -33,7 +34,7 @@ const AllocateResource = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/planner/allocate-resource", formData, {
+      await axios.post(`${API_BASE_URL}/api/planner/allocate-resource`, formData, {
         withCredentials: true,
       });
       alert("Resource allocated successfully!");

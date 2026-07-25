@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config/api";
 
 const PlannerAssignResources = () => {
   const [approvedEvents, setApprovedEvents] = useState([]);
@@ -13,17 +14,17 @@ const PlannerAssignResources = () => {
 
   const fetchData = async () => {
     const eventRes = await axios.get(
-      "http://localhost:5000/api/planner/approved-events",
+      `${API_BASE_URL}/api/planner/approved-events`,
       { withCredentials: true }
     );
     setApprovedEvents(eventRes.data);
 
-    const resRes = await axios.get("http://localhost:5000/api/planner/all", {
+    const resRes = await axios.get(`${API_BASE_URL}/api/planner/all`, {
       withCredentials: true,
     });
     setResources(resRes.data);
 
-    const staffRes = await axios.get("http://localhost:5000/api/staff/getstaff", {
+    const staffRes = await axios.get(`${API_BASE_URL}/api/staff/getstaff`, {
       withCredentials: true,
     });
     setStaffList(staffRes.data);
@@ -51,7 +52,7 @@ const PlannerAssignResources = () => {
   const handleAssignStaff = async (eventId, staffId) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/planner/event/${eventId}/assign-staff`,
+        `${API_BASE_URL}/api/planner/event/${eventId}/assign-staff`,
         { staffId },
         { withCredentials: true }
       );
@@ -70,7 +71,7 @@ const PlannerAssignResources = () => {
           selectedResources[eventId]?.filter((r) => r.quantity > 0) || [],
       };
       await axios.put(
-        `http://localhost:5000/api/planner/${eventId}/assign`,
+        `${API_BASE_URL}/api/planner/${eventId}/assign`,
         payload,
         { withCredentials: true }
       );

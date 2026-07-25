@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaCalendarAlt, FaMapMarkerAlt, FaUsers, FaTags, FaInfoCircle } from 'react-icons/fa';
+import { API_BASE_URL } from '../../config/api';
 
 const MyEventRequests = () => {
   const [events, setEvents] = useState([]);
@@ -9,7 +10,7 @@ const MyEventRequests = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/client/my-events', {
+        const res = await axios.get(`${API_BASE_URL}/api/client/my-events`, {
           withCredentials: true
         });
         setEvents(res.data);

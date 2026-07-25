@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { Menu, X } from "lucide-react";
+import { API_BASE_URL } from "../config/api";
 
 const Navbar = () => {
   const [role, setRole] = useState(null);
@@ -12,7 +13,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchRole = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/user", {
+        const res = await axios.get(`${API_BASE_URL}/api/auth/user`, {
           withCredentials: true,
         });
         setRole(res.data.role);
@@ -27,7 +28,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:5000/api/auth/logout", {
+      await axios.get(`${API_BASE_URL}/api/auth/logout`, {
         withCredentials: true,
       });
       localStorage.clear();

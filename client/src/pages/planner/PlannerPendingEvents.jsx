@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaMapMarkerAlt, FaEnvelope, FaClipboardList, FaCalendarAlt } from 'react-icons/fa';
+import { API_BASE_URL } from '../../config/api';
 
 const PlannerPendingEvents = () => {
   const [events, setEvents] = useState([]);
 
   const fetchEvents = async () => {
-    const res = await axios.get('http://localhost:5000/api/planner/pending-events', {
+    const res = await axios.get(`${API_BASE_URL}/api/planner/pending-events`, {
       withCredentials: true,
     });
     setEvents(res.data);
@@ -19,7 +20,7 @@ const PlannerPendingEvents = () => {
   const handleStatusChange = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/planner/${id}/status`,
+        `${API_BASE_URL}/api/planner/${id}/status`,
         { status },
         { withCredentials: true }
       );

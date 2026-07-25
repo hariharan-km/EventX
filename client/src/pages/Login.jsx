@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { API_BASE_URL } from "../config/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,12 +14,12 @@ const Login = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${API_BASE_URL}/api/auth/login`,
         { email, password },
         { withCredentials: true }
       );
 
-      const res = await axios.get("http://localhost:5000/api/auth/user", {
+      const res = await axios.get(`${API_BASE_URL}/api/auth/user`, {
         withCredentials: true,
       });
       const { role } = res.data;

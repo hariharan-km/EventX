@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/api';
 
 const Status = () => {
   const [events, setEvents] = useState([]);
@@ -7,7 +8,7 @@ const Status = () => {
   useEffect(() => {
     const fetchMyEvents = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/staff/my-events', {
+        const res = await axios.get(`${API_BASE_URL}/api/staff/my-events`, {
           withCredentials: true,
         });
         setEvents(res.data);
@@ -21,7 +22,7 @@ const Status = () => {
 
   const markAsCompleted = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/staff/event/${id}/complete`, {}, {
+      await axios.put(`${API_BASE_URL}/api/staff/event/${id}/complete`, {}, {
         withCredentials: true,
       });
       alert("Marked as completed ✅");

@@ -3,13 +3,14 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import axios from 'axios';
 import './calendar.css'; // Custom styles for marking tiles
+import { API_BASE_URL } from '../config/api';
 
 const GetEvents = () => {
   const [events, setEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/planner/get-event", { withCredentials: true })
+    axios.get(`${API_BASE_URL}/api/planner/get-event`, { withCredentials: true })
       .then(res => setEvents(res.data))
       .catch(err => console.error("Error fetching events:", err));
   }, []);

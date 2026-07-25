@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { FaTools, FaCubes, FaToggleOn } from 'react-icons/fa';
+import { API_BASE_URL } from '../../config/api';
 
 const AddResource = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,7 @@ const AddResource = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:5000/api/planner/add-resource', formData, {
+      const res = await axios.post(`${API_BASE_URL}/api/planner/add-resource`, formData, {
         withCredentials: true,
         headers: { 'Content-Type': 'application/json' }
       });
