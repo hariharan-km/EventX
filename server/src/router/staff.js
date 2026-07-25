@@ -1,6 +1,6 @@
 import { getMyAllocatedEvents,getAllStaff,markEventCompleted, getEventById, updateEventDetails } from '../controller/staff.js';
 import express from "express";
-import { authenticateToken, authorizeRoles } from '../middleware/auth.js';
+import { authenticateToken, authorizeRoles } from '../middleware/Auth.js';
 
 
 const router=express.Router();

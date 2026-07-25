@@ -1,5 +1,5 @@
 import Event from '../model/Event.js';
-import Resource from '../model/Resource.js';
+import Resource from '../model/resource.js';
 import User from '../model/User.js';
 
 export const getMyAllocatedEvents = async (req, res) => {
