@@ -20,7 +20,7 @@ export const getMyAllocatedEvents = async (req, res) => {
 export const getAllStaff = async (req, res) => {
   try {
     // Find staff already assigned to any **non-completed** event
-    const assignedStaffIds = await Event.find({ 
+    const assignedStaffIds = await Event.find({
       status: { $ne: 'Completed' },
       assignedStaff: { $ne: null }
     }).distinct('assignedStaff');
